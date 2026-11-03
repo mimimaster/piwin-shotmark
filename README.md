@@ -34,12 +34,31 @@ macOS (Apple Silicon): download the dmg from
 signed with a Developer ID and notarized, so Gatekeeper opens it without the
 right-click dance.
 
-Other platforms, or building yourself:
+Other platforms, or building yourself (requires Rust **1.90+**, the highest
+`rust-version` among current dependencies; Node.js for the frontend):
 
 ```bash
 npm install
 npm run app:build     # produces a .app / .msi / .AppImage under src-tauri/target/release/bundle
 ```
+
+### Linux build dependencies
+
+Debian/Ubuntu (same set CI installs, plus the runtime clipboard tool):
+
+```bash
+sudo apt-get install -y libwebkit2gtk-4.1-dev libgtk-3-dev libappindicator3-dev \
+  librsvg2-dev patchelf libdbus-1-dev libxdo-dev xclip
+```
+
+Runtime notes:
+
+- Capture goes through `xdg-desktop-portal` when available. On pure X11 without
+  a portal, install at least one region tool: `maim` or `scrot` (also supported:
+  `grim` + `slurp`, `gnome-screenshot`, `spectacle`).
+- Clipboard: `xclip` on X11, `wl-clipboard` (`wl-copy`) on Wayland.
+- Linux has no in-app post-capture annotation editor yet; the shot goes straight
+  to the clipboard.
 
 ## Use
 
