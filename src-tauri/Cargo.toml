@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "QQ-style screenshot tool: silent capture, region select, annotate, clipboard and pin windows"
 authors = ["piwin"]
 edition = "2021"
+rust-version = "1.90"
 license = "MIT"
 repository = "https://github.com/mimimaster/piwin-shotmark"
 homepage = "https://github.com/mimimaster/piwin-shotmark"
