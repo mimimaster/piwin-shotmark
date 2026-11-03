@@ -1,0 +1,152 @@
+/* Built-in screenshot editor + permission dialog (spec 2026-10-25 §12.6).
+   Shared by the capture overlay window and the Linux in-window editor. */
+
+/* Linux host: full-screen, chromeless modal around the editor stage. */
+.screen-capture-editor .piwin-modal-content.piwin-modal-content {
+  background: rgba(12, 11, 10, 0.86);
+  border: none;
+  border-radius: 0;
+  backdrop-filter: blur(6px);
+}
+
+.screen-capture-editor .piwin-modal-body {
+  height: 100%;
+  padding: 0;
+}
+
+.screen-capture-editor .piwin-modal-event-boundary {
+  height: 100%;
+}
+
+.screen-capture-frame {
+  position: relative;
+  height: 100%;
+  padding: 28px;
+}
+
+.screen-capture-frame > .screen-capture-stage {
+  position: absolute;
+  inset: 28px;
+}
+
+.screen-capture-stage {
+  overflow: hidden;
+  user-select: none;
+  touch-action: none;
+  -webkit-user-select: none;
+}
+
+.screen-capture-image,
+.screen-capture-overlay {
+  position: absolute;
+  pointer-events: none;
+}
+
+.screen-capture-dim {
+  fill: rgba(0, 0, 0, 0.42);
+}
+
+.screen-capture-hint,
+.screen-capture-size {
+  position: absolute;
+  pointer-events: none;
+  color: #fff;
+  background: rgba(20, 20, 20, 0.72);
+  font: 500 12px/22px -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+    'Microsoft YaHei', sans-serif;
+  white-space: nowrap;
+}
+
+.screen-capture-hint {
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.screen-capture-size {
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 4px;
+  font-variant-numeric: tabular-nums;
+}
+
+.screen-capture-text-input {
+  position: absolute;
+  min-width: 120px;
+  padding: 0;
+  border: none;
+  outline: 1px dashed currentColor;
+  background: transparent;
+  line-height: 1.2;
+}
+
+.screen-capture-toolbar {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  border-radius: 10px;
+  background: rgba(30, 28, 25, 0.82);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 8px 24px -8px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(18px) saturate(1.4);
+  cursor: default;
+}
+
+.screen-capture-toolbar-group {
+  display: flex;
+  gap: 2px;
+}
+
+.screen-capture-toolbar-divider {
+  width: 1px;
+  height: 16px;
+  margin: 0 4px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.screen-capture-toolbar .piwin-icon-button {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.screen-capture-toolbar .piwin-icon-button:hover:not(:disabled) {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.screen-capture-toolbar .piwin-icon-button[aria-pressed='true'] {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.screen-capture-toolbar .piwin-icon-button:disabled {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.screen-capture-toolbar .piwin-icon-button.screen-capture-confirm,
+.screen-capture-toolbar .piwin-icon-button.screen-capture-confirm:hover:not(:disabled) {
+  color: var(--on-zhu, #fff);
+  background: var(--zhu, #b03a24);
+}
+
+.screen-capture-toolbar .piwin-icon-button.screen-capture-confirm:hover:not(:disabled) {
+  background: var(--zhu-lift, #d4553d);
+}
+
+.screen-capture-permission p {
+  margin: 0 0 var(--s-5);
+}
+
+.screen-capture-permission-note {
+  color: var(--text-muted);
+}
+
+.screen-capture-permission-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--s-4);
+}
