@@ -5,8 +5,8 @@ description = "QQ-style screenshot tool: silent capture, region select, annotate
 authors = ["piwin"]
 edition = "2021"
 license = "MIT"
-repository = "https://github.com/piwin/piwin-shotmark"
-homepage = "https://github.com/piwin/piwin-shotmark"
+repository = "https://github.com/mimimaster/piwin-shotmark"
+homepage = "https://github.com/mimimaster/piwin-shotmark"
 readme = "../README.md"
 
 [lib]
