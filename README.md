@@ -1,5 +1,7 @@
 # piwin-shotmark
 
+[![ci](https://github.com/mimimaster/piwin-shotmark/actions/workflows/ci.yml/badge.svg)](https://github.com/mimimaster/piwin-shotmark/actions/workflows/ci.yml)
+
 A QQ-style screenshot tool for the desktop. Press the shortcut, the screen
 freezes, drag out a region, annotate it in place, and the finished PNG is on
 your clipboard.
@@ -18,12 +20,12 @@ Tray-resident: no main window, no account, no network calls.
 | Platform | Capture | Overlay + annotate | Clipboard | Verified here |
 |---|---|---|---|---|
 | macOS 13+ | `screencapture -x -R` | yes | `NSPasteboard` (PNG + TIFF) | built, launched, `cargo test` green — **screen capture needs the Screen Recording grant** |
-| Windows 10+ | GDI `BitBlt` | yes | `CF_DIB` + registered `"PNG"` | **not run on hardware** — cross-checked only |
-| Linux | portal / `grim` / `gnome-screenshot` | system picker (no in-app annotate yet) | `wl-copy` / `xclip` | **not run on hardware** — type-checked only |
+| Windows 10+ | GDI `BitBlt` | yes | `CF_DIB` + registered `"PNG"` | builds and passes all 17 tests on `windows-latest`; **no desktop smoke test** |
+| Linux | portal / `grim` / `gnome-screenshot` | system picker (no in-app annotate yet) | `wl-copy` / `xclip` | builds and passes all 17 tests on `ubuntu-22.04`; **no desktop smoke test** |
 
-The Windows and Linux columns are honest gaps, not marketing: the code paths
-exist and compile for their targets, but nobody has put them on a real desktop
-yet. See `docs/platform-support.md`.
+CI compiles and unit-tests every platform. What is still missing on Windows and
+Linux is a human at a desktop: no one has pressed the shortcut there yet. See
+`docs/platform-support.md`.
 
 ## Install
 
