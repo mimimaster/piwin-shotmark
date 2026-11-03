@@ -19,7 +19,7 @@ Tray-resident: no main window, no account, no network calls.
 
 | Platform | Capture | Overlay + annotate | Clipboard | Verified here |
 |---|---|---|---|---|
-| macOS 13+ | `screencapture -x -R` | yes | `NSPasteboard` (PNG + TIFF) | built, launched, `cargo test` green — **screen capture needs the Screen Recording grant** |
+| macOS 13+ | `screencapture -x -R` | yes | `NSPasteboard` (PNG + TIFF) | signed, notarized, stapled dmg passes Gatekeeper; `cargo test` green — **screen capture needs the Screen Recording grant** |
 | Windows 10+ | GDI `BitBlt` | yes | `CF_DIB` + registered `"PNG"` | builds and passes all 17 tests on `windows-latest`; **no desktop smoke test** |
 | Linux | portal / `grim` / `gnome-screenshot` | system picker (no in-app annotate yet) | `wl-copy` / `xclip` | builds and passes all 17 tests on `ubuntu-22.04`; **no desktop smoke test** |
 
@@ -29,7 +29,12 @@ Linux is a human at a desktop: no one has pressed the shortcut there yet. See
 
 ## Install
 
-No signed builds yet. Build from source:
+macOS (Apple Silicon): download the dmg from
+[Releases](https://github.com/mimimaster/piwin-shotmark/releases). The app is
+signed with a Developer ID and notarized, so Gatekeeper opens it without the
+right-click dance.
+
+Other platforms, or building yourself:
 
 ```bash
 npm install
